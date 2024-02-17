@@ -1,0 +1,131 @@
+:root {
+  --cor0: #38454C;
+  --cor1: #445760;
+  --cor2: #FFFFFF;
+  --cor-borda: #A6A6A6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 500;
+  text-align: center;
+  margin-top: 40px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: var(--cor1);
+  color: var(--cor2);
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-btn {
+  margin-top: 60px;
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--cor2);
+  color: var(--cor0);
+  border-radius: 8px;
+}
+
+.modal-btn:hover {
+  background-color: #f7f7f7;
+}
+
+.notes {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.note {
+  border: 1px solid var(--cor-borda);
+  padding: 12px;
+  background-color: var(--cor0);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.note-title {
+  font-weight: 500;
+}
+
+.note-text {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  color: #B5BABC;
+  display: inline-block;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal form {
+  background-color: #FFFFFF;
+  padding: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal form label,
+.modal form span {
+  color: var(--cor0);
+}
+
+.modal form input {
+  width: 100%;
+  padding: 8px 4px;
+  margin-top: 4px;
+}
+
+.add-note {
+  margin-top: 10px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--cor-borda);
+}
+
+.add-note:hover {
+  background-color: #ececec;
+}
+
+.cancel {
+  text-decoration: underline;
+  place-self: start;
+  cursor: pointer;
+}
