@@ -46,6 +46,8 @@ function initNoteApp() {
       modal.classList.remove("active");
 
       deleteNote(count);
+    } else {
+      alert("Required Fields");
     }
   }
 
