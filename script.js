@@ -40,7 +40,7 @@ function initNoteApp() {
       contentInput.value = "";
       modal.classList.remove("active");
 
-      addDeleteEvent(count, note);
+      addDeleteEvent(note);
     } else {
       alert("Required Fields");
     }
@@ -56,7 +56,7 @@ function initNoteApp() {
     return div;
   }
 
-  function addDeleteEvent(id, noteElement) {
+  function addDeleteEvent(noteElement) {
     const deleteButton = noteElement.querySelector(".delete-btn");
     events.forEach((event) => {
       deleteButton.addEventListener(event, () => {
