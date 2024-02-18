@@ -1,11 +1,9 @@
 function initNoteApp() {
   const modalBtn = document.querySelector(".modal-btn")
   const notesArea = document.querySelector(".notes");
-  const notes = document.querySelectorAll(".note");
   const modal = document.querySelector(".modal");
   const addNoteBtn = document.querySelector(".add-note");
   const events = ["click", "touchstart"];
-  let count = 0;
 
   function openModal(event) {
     event.preventDefault();
@@ -32,30 +30,38 @@ function initNoteApp() {
   function createNote() {
     const titleInput = document.querySelector(".title-input");
     const contentInput = document.querySelector(".content-input");
-    if (titleInput.value != "" && contentInput.value != "") {
-      ++count;
-      const div = document.createElement("div");
-      div.classList.add("note");
-      div.id = count;
-      div.innerHTML = `<h3 class="note-title">${titleInput.value}</h3>
-      <p class="note-text">${contentInput.value}</p>
-      <span class="delete-btn" id="${count}deleteButton">Delete</span>`;
-      notesArea.appendChild(div);
+
+    if (titleInput.value !== "" && contentInput.value !== "") {
+      const count = notesArea.children.length + 1;
+      const note = createNoteElement(count, titleInput.value, contentInput.value);
+      notesArea.append(note);
+
       titleInput.value = "";
       contentInput.value = "";
       modal.classList.remove("active");
 
-      deleteNote(count, div);
+      addDeleteEvent(count, note);
     } else {
       alert("Required Fields");
     }
   }
 
-  function deleteNote(id, noteElement) {
-    const deleteButton = noteElement.querySelector(".delete-btn");
+  function createNoteElement(id, title, content) {
+    const div = document.createElement("div");
+    div.classList.add("note");
+    div.id = id;
+    div.innerHTML = `<h3 class="note-title">${title}</h3>
+    <p class="note-text">${content}</p>
+    <span class="delete-btn" id="${id}deleteButton">Delete</span>`;
+    return div;
+  }
 
-    deleteButton.addEventListener("click", () => {
-      noteElement.remove();
+  function addDeleteEvent(id, noteElement) {
+    const deleteButton = noteElement.querySelector(".delete-btn");
+    events.forEach((event) => {
+      deleteButton.addEventListener(event, () => {
+        noteElement.remove();
+      })
     })
   }
 
