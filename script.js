@@ -4,6 +4,8 @@ function initNoteApp() {
   const modal = document.querySelector(".modal");
   const addNoteBtn = document.querySelector(".add-note");
   const events = ["click", "touchstart"];
+  const titleInput = document.querySelector(".title-input");
+  const contentInput = document.querySelector(".content-input");
 
   window.addEventListener("load", lodadNotesFromLocalStorage);
 
@@ -16,6 +18,8 @@ function initNoteApp() {
   function closeModal(event) {
     const cancelBtn = document.querySelector(".cancel");
     if (event.target === modal || event.target === cancelBtn) {
+      titleInput.value = "";
+      contentInput.value = "";
       modal.classList.remove("active");
     }
   }
@@ -24,14 +28,8 @@ function initNoteApp() {
     modalBtn.addEventListener(e, openModal);
   })
 
-  function addNote(event) {
+  function createNote(event) {
     event.preventDefault();
-    createNote();
-  }
-
-  function createNote() {
-    const titleInput = document.querySelector(".title-input");
-    const contentInput = document.querySelector(".content-input");
 
     if (titleInput.value !== "" && contentInput.value !== "") {
       const count = notesArea.children.length + 1;
@@ -104,7 +102,7 @@ function initNoteApp() {
   }
 
   events.forEach((e) => {
-    addNoteBtn.addEventListener(e, addNote);
+    addNoteBtn.addEventListener(e, createNote);
   })
 }
 
