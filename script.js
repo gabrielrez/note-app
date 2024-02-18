@@ -4,7 +4,7 @@ function initNoteApp() {
   const notes = document.querySelectorAll(".note");
   const modal = document.querySelector(".modal");
   const addNoteBtn = document.querySelector(".add-note");
-  const events = ["click", "toutchstart"];
+  const events = ["click", "touchstart"];
   let count = 0;
 
   function openModal(event) {
@@ -15,7 +15,7 @@ function initNoteApp() {
 
   function closeModal(event) {
     const cancelBtn = document.querySelector(".cancel");
-    if (event.target == modal || event.target == cancelBtn) {
+    if (event.target === modal || event.target === cancelBtn) {
       modal.classList.remove("active");
     }
   }
@@ -39,24 +39,23 @@ function initNoteApp() {
       div.id = count;
       div.innerHTML = `<h3 class="note-title">${titleInput.value}</h3>
       <p class="note-text">${contentInput.value}</p>
-      <span class="delete-btn" id="${count}deleteButtom">Delete</span>`;
+      <span class="delete-btn" id="${count}deleteButton">Delete</span>`;
       notesArea.appendChild(div);
       titleInput.value = "";
       contentInput.value = "";
       modal.classList.remove("active");
 
-      deleteNote(count);
+      deleteNote(count, div);
     } else {
       alert("Required Fields");
     }
   }
 
-  function deleteNote(id) {
-    const noteToDelete = document.getElementById(id);
-    const deleteButtom = noteToDelete.querySelector(".delete-btn");
+  function deleteNote(id, noteElement) {
+    const deleteButton = noteElement.querySelector(".delete-btn");
 
-    deleteButtom.addEventListener("click", () => {
-      noteToDelete.remove();
+    deleteButton.addEventListener("click", () => {
+      noteElement.remove();
     })
   }
 
